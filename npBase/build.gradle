@@ -1,0 +1,102 @@
+apply plugin: "com.android.library"
+
+android {
+
+    compileSdkVersion var.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion var.minSdkVersion
+        targetSdkVersion var.targetSdkVersion
+
+        versionCode 1
+        versionName "1.0.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+
+}
+
+dependencies {
+
+    //自带的依赖
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    //QMUI腾讯UI框架
+    api 'com.qmuiteam:qmui:1.1.7'
+    //注解
+    api 'com.jakewharton:butterknife:10.1.0'
+
+
+    //np 工具箱
+    api 'com.github.nopointer:npUtils:1.0.5'
+
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////         v4,v7              ///////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //这几个包最好一起用吧，不然动不动就闪退了
+//    api "com.android.support:support-v4:${var.supportLibraryVersion}"
+//    api "com.android.support:appcompat-v7:${var.supportLibraryVersion}"
+//    api "com.android.support:recyclerview-v7:${var.supportLibraryVersion}"
+//    api "com.android.support:design:${var.supportLibraryVersion}"
+
+    api "androidx.recyclerview:recyclerview:1.0.0"
+    api "androidx.appcompat:appcompat:1.0.2"
+    api "androidx.multidex:multidex:2.0.1"
+    api "androidx.cardview:cardview:1.0.0"
+
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////        工具包              /////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+
+    implementation "com.google.code.gson:gson:2.8.2"
+
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////        第三方view控件              /////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+
+    //图片加载工具（可以单独使用）
+    api 'me.panpf:sketch:2.6.0'
+    //非弹框选择器
+    api 'cn.carbswang.android:NumberPickerView:1.0.2'
+    //PickerView选择器
+    api 'com.contrarywind:Android-PickerView:4.1.8'
+    //图片选择工具/剪切
+    api 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.8'
+    //加载引擎
+    implementation "com.github.bumptech.glide:glide:4.11.0"
+    //np 权限管理工具
+    api 'com.github.nopointer:npPermission:1.0.2'
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    ////////////////        根据需要可选              /////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //嵌套滑动view
+//    implementation 'com.lzy.widget:view-core:0.2.2'
+    //pdf控件
+//    implementation 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
+
+
+    //lzy裁剪框架 依赖的第三方库
+    implementation 'com.github.chrisbanes.photoview:library:1.2.4'
+    //lzy图片加载引擎依赖的第三方库
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'org.xutils:xutils:3.3.36'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
+
+}
